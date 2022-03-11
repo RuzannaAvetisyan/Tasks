@@ -49,5 +49,15 @@ fun getSizedRandomUniqueArray(size: Int): IntArray {
 fun String.toCamelCaseString() = this.split("_")
     .joinToString("") { part -> part.replaceFirstChar { it.uppercase()}}
 
+fun String.toCamelCaseStringFirstSmall() = this.split("_")
+    .mapIndexed { i, part -> if(i == 0) part else part.replaceFirstChar { it.uppercase()} }.joinToString("")
 
 
+fun toCamelCaseString(snakeCase: String, firstSmall: Boolean): String{
+    val parts = snakeCase.split("_").toTypedArray()
+    val start = if(firstSmall) 1 else 0
+    for(i in start until parts.size){
+        parts[i] = parts[i].replaceFirstChar { it.uppercase()}
+    }
+    return parts.joinToString("")
+}
