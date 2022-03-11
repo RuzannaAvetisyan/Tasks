@@ -21,9 +21,10 @@ fun sumMinMax2(array: IntArray): Int {
 fun String.checkPalindrome() = this == this.reversed()
 
 fun checkPalindrome2(text: String): Boolean {
+    var j = text.length - 1
     for(i in text.indices){
-        if(text[i] != text[text.length - i - 1])
-            return false
+        if(i >= j) break
+        if(text[i] != text[j--]) return false
     }
     return true
 }
